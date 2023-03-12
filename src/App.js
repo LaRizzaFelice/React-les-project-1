@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { MyButton } from "./components/Mybutton";
+import { Counter } from "./components/Counter";
+import "./style.css";
+import { Movies } from "./components/Movies";
+import { InputItem } from "./components/InputItem";
+import { useState } from "react";
 
-function App() {
+const buttonLabels = ["hey", "hoy", "hallo", "dag"];
+
+const App = () => {
+  const [text, setText] = useState();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 className="title" style={{ fontSize: 100, color: "black" }}>
+        Hello
+      </h1>
+      <InputItem setText={setText} text={text} />
+      {buttonLabels.map((label) => {
+        return <MyButton label={label} heyLabel={text} setText={setText} />;
+      })}
+      <Counter />
+      <Movies />
     </div>
   );
-}
+};
 
 export default App;
